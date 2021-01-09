@@ -1,32 +1,114 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+
+    <v-card class="overflow-hidden">
+    <v-app-bar
+      style="height:100px;"
+      absolute
+      color="#6A76AB"
+      dark
+      shrink-on-scroll
+      prominent
+      src="https://picsum.photos/1920/1080?random"
+      fade-img-on-scroll
+      scroll-target="#scrolling-techniques-4"
+    >
+      <template v-slot:img="{ props }">
+        <v-img
+          v-bind="props"
+          gradient="to top right, rgba(100,115,201,.7), rgba(25,32,72,.7)"
+        ></v-img>
+      </template>
+
+      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+
+      <v-toolbar-title>Bookstore</v-toolbar-title>
+
+      <v-spacer></v-spacer>
+
+      <v-btn icon>
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+
+      <v-btn icon>
+        <v-icon>mdi-heart</v-icon>
+      </v-btn>
+
+      <v-menu
+        bottom
+        left
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            icon
+            color="yellow"
+            v-bind="attrs"
+            v-on="on"
+          >
+            <v-icon>mdi-dots-vertical</v-icon>
+          </v-btn>
+        </template>
+
+        <v-list>
+          <v-list-item
+            v-for="(item, i) in items"
+            :key="i"
+          >
+          <router-link :to="item.path"><v-list-item-title>{{ item.title }}</v-list-item-title></router-link> |
+          </v-list-item>
+        </v-list>
+      </v-menu>
+
+      <template v-slot:extension>
+        <v-tabs align-with-title  v-for="(item, i) in items"
+            :key="i">
+            <v-tab><router-link :to="item.path">{{ item.title }}</router-link></v-tab>
+        </v-tabs>
+      </template>
+    </v-app-bar>
+    <v-sheet
+      id="scrolling-techniques-4"
+      class="overflow-y-auto"
+      max-height="600"
+    >
+      <v-container style="height: 1000px;"></v-container>
+    </v-sheet>
+  </v-card>
     <router-view/>
   </div>
 </template>
-
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+<script>
+  export default {
+    data: () => ({
+      items: [
+        { title: 'Home', path: '/', icon: 'home' },
+        { title: 'Genres', path: '/genres', icon: 'face' },
+        { title: 'Best Sellers', path: '/best-sellers', icon: 'lock_open' },
+        { title: 'By Years', path: '/by-years', icon: 'lock_open' },
+        { title: 'Profile', path: '/profile', icon: 'lock_open' }
+      ],
+    }),
   }
+</script>
+
+<style>
+.v-toolbar__content {
+  height: 50px!important;
+}
+#scrolling-techniques-4 {
+  max-height: 150px;
+}
+.v-image {
+  max-height: 150px;
+}
+.v-card.v-app-bar  {
+  max-height: 200px!important;
+}
+.v-sheet {
+  max-height: 200px;
+}
+a {
+  text-decoration: none;
+  color: azure;
 }
 </style>
