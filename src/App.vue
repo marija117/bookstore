@@ -11,7 +11,7 @@
       prominent
       src="https://picsum.photos/1920/1080?random"
       fade-img-on-scroll
-      scroll-target="#scrolling-techniques-4"
+      scroll-target="#scrolling-techniques"
     >
       <template v-slot:img="{ props }">
         <v-img
@@ -67,14 +67,14 @@
       </template>
     </v-app-bar>
     <v-sheet
-      id="scrolling-techniques-4"
+      id="scrolling-techniques"
       class="overflow-y-auto"
-      max-height="600"
+      max-height="800"
     >
-      <v-container style="height: 1000px;"></v-container>
+      <v-container style="height: 800px; padding-top:100px;">    <router-view/>
+</v-container>
     </v-sheet>
   </v-card>
-    <router-view/>
   </div>
 </template>
 <script>
@@ -104,7 +104,7 @@
 .v-card.v-app-bar  {
   max-height: 200px!important;
 }
-.v-sheet {
+.overflow-y-auto.v-sheet.theme--light {
   max-height: 200px;
 }
 a {
