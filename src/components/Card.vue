@@ -16,6 +16,7 @@
     <v-img
       height="250"
       src="../images/sidarta.jpg"
+      @click="details"
     ></v-img>
 
     <v-card-title>Sidarta</v-card-title>
@@ -75,6 +76,9 @@ export default {
 
       setTimeout(() => (this.loading = false), 2000)
     },
+    details () {
+       this.$router.push({ name: "Details" })
+    }
   },
 }
 </script>
