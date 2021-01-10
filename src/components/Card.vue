@@ -17,6 +17,7 @@
       height="250"
       src="../images/sidarta.jpg"
       @click="details"
+      style="cursor:pointer"
     ></v-img>
 
     <v-card-title>Sidarta</v-card-title>
