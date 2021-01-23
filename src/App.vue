@@ -54,7 +54,7 @@
             v-for="(item, i) in items"
             :key="i"
           >
-          <router-link :to="item.path"><v-list-item-title>{{ item.title }}</v-list-item-title></router-link> |
+          <router-link :to="item.path"><v-list-item-title>{{ item.title }}</v-list-item-title></router-link> 
           </v-list-item>
         </v-list>
       </v-menu>
@@ -69,10 +69,10 @@
     <v-sheet
       id="scrolling-techniques"
       class="overflow-y-auto"
-      max-height="800"
+      style="max-height:100px;"
     >
       <v-container style="height: 800px; padding-top:100px;">    <router-view/>
-</v-container>
+      </v-container>
     </v-sheet>
   </v-card>
   </div>

@@ -1,23 +1,23 @@
 <template>
   <v-app>
     <v-row>
-      <Card/>
-      <Card/>
-      <Card/>
-      <Card/>
-      <Card/>
+      <Slide/>
+      <Slide/>
+      <Slide/>
+      <Slide/>
+      <Slide/>
     </v-row>
   </v-app>
 </template>
 
 <script>
-import Card from '@/components/Card.vue'
+import Slide from '@/components/Slide.vue'
 
 // @ is an alias to /src
 export default {
   name: 'Home',
   components: {
-    Card
+    Slide
   }
 }
 </script>

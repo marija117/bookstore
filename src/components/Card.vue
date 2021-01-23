@@ -1,18 +1,11 @@
 <template>
   <v-card
     :loading="loading"
-    class="mx-2 my-12"
+    class="mx-2"
+    style="box-shadow:none;"
     max-width="200"
-    max-height="440"
+    max-height="400"
   >
-    <template slot="progress">
-      <v-progress-linear
-        color="deep-purple"
-        height="10"
-        indeterminate
-      ></v-progress-linear>
-    </template>
-
     <v-img
       height="250"
       src="../images/sidarta.jpg"
@@ -22,8 +15,7 @@
 
     <v-card-title>Sidarta</v-card-title>
 
-    <v-card-text>
-    
+    <v-card-text class="py-0">
         <div class="subtitle-1">
          Herman Hese
         </div>
@@ -36,15 +28,9 @@
           readonly
           size="14"
         ></v-rating>
-
-        <div class="grey--text">
-          4.5 (413)
-        </div>
-
-      <div>19 October</div>
     </v-card-text>
 
-    <v-card-text>
+    <v-card-text class="py-0">
       <div><span class="red--text text-md-h6">5.00 €</span></div>
     </v-card-text>
 
@@ -52,8 +38,10 @@
       class="d-flex justify-center"
     >
       <v-btn
-        color="accent"
+      style="color:white;"
+        color="yellow accent-4"
         elevation="2"
+        class="px-9"
         medium
         @click="reserve"
       >
