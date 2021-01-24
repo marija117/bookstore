@@ -60,9 +60,9 @@
       </v-menu>
 
       <template v-slot:extension>
-        <v-tabs align-with-title  v-for="(item, i) in items"
+        <v-tabs v-for="(item, i) in items"
             :key="i">
-            <v-tab><router-link :to="item.path">{{ item.title }}</router-link></v-tab>
+            <v-tab ><router-link :to="item.path">{{ item.title }}</router-link></v-tab>
         </v-tabs>
       </template>
     </v-app-bar>
@@ -84,8 +84,7 @@
         { title: 'Home', path: '/', icon: 'home' },
         { title: 'Genres', path: '/genres', icon: 'face' },
         { title: 'Best Sellers', path: '/best-sellers', icon: 'lock_open' },
-        { title: 'By Years', path: '/by-years', icon: 'lock_open' },
-        { title: 'Profile', path: '/profile', icon: 'lock_open' }
+        { title: 'By Years', path: '/by-years', icon: 'lock_open' }
       ],
     }),
   }

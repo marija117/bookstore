@@ -1,9 +1,9 @@
 <template>
-<v-app>
+<v-app min-height="none">
   <v-card
     class="mt-5 mx-auto"
-    max-width="1000"
-    height="85%"
+    width="100%"
+    height="70%"
   >
     <v-row class="ma-0"  style="height:100%;">
       <v-col cols="4" class="pa-0" style="height:100%;">
