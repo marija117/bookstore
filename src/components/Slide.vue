@@ -1,6 +1,6 @@
 <template>
   <v-sheet
-    class="mx-auto mt-3 rounded-lg"
+    class="mx-auto mt-5 rounded-lg"
     elevation="8"
     width="100%"
   >

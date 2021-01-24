@@ -45,7 +45,7 @@
         medium
         @click="reserve"
       >
-        Add to card
+        Add to cart
       </v-btn>
     </v-card-actions>
   </v-card>
