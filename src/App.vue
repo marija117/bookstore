@@ -33,6 +33,11 @@
       <v-btn icon>
         <v-icon>mdi-heart</v-icon>
       </v-btn>
+       <v-btn icon>
+          <router-link to="/login">
+        <v-icon>mdi-account</v-icon>
+         </router-link> 
+      </v-btn>
 
       <v-menu
         bottom
