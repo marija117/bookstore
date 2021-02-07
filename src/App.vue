@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-
     <v-card class="overflow-hidden">
     <v-app-bar
       style="height:100px;"
@@ -20,7 +19,13 @@
         ></v-img>
       </template>
 
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon height="36px">
+        <template v-slot:extension>
+          <v-tabs v-for="(item, i) in items" :key="i">
+            <v-tab ><router-link :to="item.path">{{ item.title }}</router-link></v-tab>
+          </v-tabs>
+        </template>
+      </v-app-bar-nav-icon>
 
       <v-toolbar-title>Bookstore</v-toolbar-title>
 
@@ -33,10 +38,11 @@
       <v-btn icon>
         <v-icon>mdi-heart</v-icon>
       </v-btn>
-       <v-btn icon>
-          <router-link to="/login">
-        <v-icon>mdi-account</v-icon>
-         </router-link> 
+      
+      <v-btn icon>
+        <router-link to="/login">
+          <v-icon>mdi-account</v-icon>
+        </router-link> 
       </v-btn>
 
       <v-menu
@@ -96,6 +102,13 @@
 </script>
 
 <style>
+.v-slide-group__content {
+  justify-content: center;
+}
+
+.v-application {
+  height: 550px;
+}
 .v-toolbar__content {
   height: 50px!important;
 }

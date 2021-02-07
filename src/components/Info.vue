@@ -3,7 +3,7 @@
   <v-card
     class="mx-auto my-0"
     style="width:100%;"
-    height="50%"
+    height="35%"
   >
     <Row/>
     <Row/>

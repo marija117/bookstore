@@ -25,7 +25,7 @@
                         Don't have an account?
                     </div>
                     <div class="d-flex mt-3 justify-center" v-if="options.isLoggingIn">
-                        <v-btn light @click="options.isLoggingIn = false">Sign up</v-btn>
+                        <v-btn color="orange" text @click="options.isLoggingIn = false">Sign up</v-btn>
                     </div>
                 </v-flex>
                 </v-layout>
