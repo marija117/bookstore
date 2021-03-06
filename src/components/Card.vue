@@ -53,8 +53,12 @@
 
 <script>
 // @ is an alias to /src
+import moduleBook from "@/store/book/moduleBook.js";
+
+
 export default {
   data: () => ({
+    books: [],
     loading: false,
     selection: 1,
   }),
@@ -69,5 +73,14 @@ export default {
        this.$router.push({ name: "Details" })
     }
   },
+  created () {
+    if (!moduleBook.isRegistered) {
+      this.$store.registerModule('book', moduleBook)
+      moduleBook.isRegistered = true
+    }
+    this.$store.dispatch('book/fetchBooks')
+      .then(res => { this.books = res.data.books })
+      .catch(err => { console.error(err) })
+   }
 }
 </script>
