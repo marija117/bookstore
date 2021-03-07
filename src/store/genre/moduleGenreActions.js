@@ -1,11 +1,11 @@
 import axios from 'axios'
 
 export default {
-  fetchBooks ({ commit }) {
+  fetchGenres ({ commit }) {
     return new Promise((resolve, reject) => {
-      axios.get(`${process.env.VUE_APP_API_URL}books`)
+      axios.get(`${process.env.VUE_APP_API_URL}genres`)
         .then((response) => {
-          commit('SET_BOOKS', response.data)
+          commit('SET_GENRES', response.data)
           resolve(response)
         })
         .catch((error) => { reject(error) })

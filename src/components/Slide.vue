@@ -16,11 +16,12 @@
       show-arrows
     >
       <v-slide-item
-        v-for="n in 15"
-        :key="n"
+        v-for="book in books"
+        :key="book.id"
         v-slot="{ active, toggle }"
       >
         <Card
+          :bookData="book"
           :color="active ? 'primary' : 'grey lighten-1'"
           height="200"
           width="100"
@@ -46,8 +47,8 @@
   </v-sheet>
 </template>
 <script>
-
 import Card from './Card.vue'
+import moduleBook from "@/store/book/moduleBook.js";
 
   export default {
     name: 'Slide',
@@ -57,5 +58,18 @@ import Card from './Card.vue'
     data: () => ({
       model: null,
     }),
+    computed: {
+      books() {
+        return this.$store.state.book.books;
+      },
+    },
+    created () {
+    if (!moduleBook.isRegistered) {
+      this.$store.registerModule('book', moduleBook)
+      moduleBook.isRegistered = true
+    }
+    this.$store.dispatch('book/fetchBooks')
+      .catch(err => { console.error(err) })
+   }
   }
 </script>

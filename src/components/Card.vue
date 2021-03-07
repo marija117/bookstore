@@ -13,7 +13,7 @@
       style="cursor:pointer"
     ></v-img>
 
-    <v-card-title>Sidarta</v-card-title>
+    <v-card-title>{{ bookData.title }}</v-card-title>
 
     <v-card-text class="py-0">
         <div class="subtitle-1">
@@ -31,7 +31,7 @@
     </v-card-text>
 
     <v-card-text class="py-0">
-      <div><span class="red--text text-md-h6">5.00 €</span></div>
+      <div><span class="red--text text-md-h6">{{ bookData.price }} €</span></div>
     </v-card-text>
 
     <v-card-actions
@@ -53,12 +53,14 @@
 
 <script>
 // @ is an alias to /src
-import moduleBook from "@/store/book/moduleBook.js";
-
 
 export default {
+  props: {
+    bookData: {
+      type: Object,
+    }
+  },
   data: () => ({
-    books: [],
     loading: false,
     selection: 1,
   }),
@@ -72,15 +74,6 @@ export default {
     details () {
        this.$router.push({ name: "Details" })
     }
-  },
-  created () {
-    if (!moduleBook.isRegistered) {
-      this.$store.registerModule('book', moduleBook)
-      moduleBook.isRegistered = true
-    }
-    this.$store.dispatch('book/fetchBooks')
-      .then(res => { this.books = res.data.books })
-      .catch(err => { console.error(err) })
-   }
+  }
 }
 </script>
