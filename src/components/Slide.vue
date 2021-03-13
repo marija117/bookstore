@@ -6,7 +6,7 @@
   >
   <v-card-text class="pb-0">
     <div class="title">
-      Crime
+      {{ genreData.name }}
     </div>
   </v-card-text>
     <v-slide-group
@@ -16,7 +16,7 @@
       show-arrows
     >
       <v-slide-item
-        v-for="book in books"
+        v-for="book in genreData.books"
         :key="book.id"
         v-slot="{ active, toggle }"
       >
@@ -48,28 +48,19 @@
 </template>
 <script>
 import Card from './Card.vue'
-import moduleBook from "@/store/book/moduleBook.js";
 
   export default {
     name: 'Slide',
     components: {
         Card
     },
+    props: {
+      genreData: {
+        type: Object,
+      }
+    },
     data: () => ({
       model: null,
-    }),
-    computed: {
-      books() {
-        return this.$store.state.book.books;
-      },
-    },
-    created () {
-    if (!moduleBook.isRegistered) {
-      this.$store.registerModule('book', moduleBook)
-      moduleBook.isRegistered = true
-    }
-    this.$store.dispatch('book/fetchBooks')
-      .catch(err => { console.error(err) })
-   }
+    })
   }
 </script>

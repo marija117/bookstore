@@ -2,11 +2,7 @@
   <v-app>
     <v-row v-for="genre in genres"
         :key="genre.id">
-      <Slide/>
-      <Slide/>
-      <Slide/>
-      <Slide/>
-      <Slide/>
+      <Slide :genreData="genre" class="mb-4" />
     </v-row>
   </v-app>
 </template>
