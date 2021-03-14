@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 // import menu from './modules/menu'
-// import moduleAuth from './auth/moduleAuth.js'
+import moduleAuth from './auth/moduleAuth.js'
 
 Vue.use(Vuex)
 
@@ -15,6 +15,6 @@ export default new Vuex.Store({
   },
   modules: {
     // menu,
-    // auth: moduleAuth
+    auth: moduleAuth
   }
 })

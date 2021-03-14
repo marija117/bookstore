@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { apiUrl } from '../../constants/config'
 
 export default {
   registerAction({ commit }, userDetails) {
@@ -28,6 +27,7 @@ export default {
     return new Promise((resolve, reject) => {
       axios.post(`${process.env.VUE_APP_API_URL}login`, userCredentials)
         .then(response => {
+          console.log("aaaa");
           const token = response.headers.authorization
           const user = response.data.user
           const client = response.data.client
