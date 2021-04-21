@@ -6,6 +6,9 @@ export default {
     return new Promise((resolve, reject) => {
       axios.post(`${process.env.VUE_APP_API_URL}register`, userDetails)
         .then(response => {
+          console.log(response.data)
+          console.log(this.userDetails)
+
           const token = response.headers.authorization
           const user = response.data
           commit('loadingSuccessMutation', { token, user })

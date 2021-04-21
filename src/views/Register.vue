@@ -3,27 +3,20 @@
             <v-main>
             <v-container class="fill-height">
                 <v-layout class="align-center justify-center">
-                <v-flex class="login-form text-xs-center"> 
-                    
+                <v-flex class="login-form text-xs-center">  
                     <v-card light>
                     <v-card-text>
                         <div class="subheading">
-                        <template v-if="options.isLoggingIn">Log in</template>
-                        <template v-else>Crate a new account</template>
+                        <template>Crate a new account</template>
                         </div>
                         <v-form>
                         <v-text-field v-model="form.email" light prepend-icon="mdi-email" label="Email" type="email"></v-text-field>
                         <v-text-field v-model="form.password" light prepend-icon="mdi-lock" label="Password" type="password"></v-text-field>
-                        <v-btn block="block" color="orange" type="submit" style="color:white;" @click.prevent="options.isLoggingIn = true">Sign up</v-btn>
+                        <v-text-field v-model="form.password_confirmation" light prepend-icon="mdi-lock" label="Password confirmation" type="password"></v-text-field>
+                        <v-btn block="block" color="orange" type="submit" style="color:white;" @click.prevent="formSubmit">Sign up</v-btn>
                         </v-form>
                     </v-card-text>
                     </v-card>
-                    <div class="d-flex mt-5 justify-center" v-if="options.isLoggingIn">
-                        Don't have an account?
-                    </div>
-                    <div class="d-flex mt-3 justify-center" v-if="options.isLoggingIn">
-                        <v-btn color="orange" text @click="options.isLoggingIn = false">Sign up</v-btn>
-                    </div>
                 </v-flex>
                 </v-layout>
             </v-container>
@@ -39,22 +32,18 @@ export default {
        form: new Form({
         email: '',
         password: '',
-        stay_signed_in: false
-      }),
-        options: {
-            isLoggingIn: true,
-            shouldStayLoggedIn: true
-        } 
+        password_confirmation: ''
+      })
     }),
     methods: {
-    ...mapActions('auth', ['loginAction']),
-    formSubmit() {
-      this.loginAction(this.form)
+    ...mapActions('auth', ['registerAction']),
+    formSubmit () {
+      this.registerAction(this.form)
         .then(() => {
-          this.$router.push('/')
+          this.$router.push('/login')
         })
         .catch(error => {
-          this.form.errors.record(error.response.data.error)
+          this.form.errors.record(error.response.data.errors)
         })
     }
   },

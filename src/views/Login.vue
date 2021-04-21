@@ -8,24 +8,23 @@
                     <v-card light>
                     <v-card-text>
                         <div class="subheading">
-                        <template v-if="options.isLoggingIn">Log in</template>
-                        <template v-else>Crate a new account</template>
+                        <template>Log in</template>
                         </div>
                         <v-form>
-                        <v-text-field v-if="!options.isLoggingIn" v-model="form.name" light prepend-icon="mdi-account" label="Name"></v-text-field>
                         <v-text-field v-model="form.email" light prepend-icon="mdi-email" label="Email" type="email"></v-text-field>
                         <v-text-field v-model="form.password" light prepend-icon="mdi-lock" label="Password" type="password"></v-text-field>
-                        <v-checkbox v-if="options.isLoggingIn" v-model="form.stay_signed_in" light label="Stay logged in?" hide-details color="orange" class="mt-0 mb-4"></v-checkbox>
-                        <v-btn v-if="options.isLoggingIn" @click.prevent="formSubmit" block="block" color="orange" type="submit" style="color:white;">Sign in</v-btn>
-                        <v-btn v-else block="block" color="orange" type="submit" style="color:white;" @click.prevent="options.isLoggingIn = true">Sign up</v-btn>
+                        <v-checkbox v-model="form.stay_signed_in" light label="Stay logged in?" hide-details color="orange" class="mt-0 mb-4"></v-checkbox>
+                        <v-btn @click.prevent="formSubmit" block="block" color="orange" type="submit" style="color:white;">Sign in</v-btn>
                         </v-form>
                     </v-card-text>
                     </v-card>
-                    <div class="d-flex mt-5 justify-center" v-if="options.isLoggingIn">
+                    <div class="d-flex mt-5 justify-center">
                         Don't have an account?
                     </div>
-                    <div class="d-flex mt-3 justify-center" v-if="options.isLoggingIn">
-                        <v-btn color="orange" text @click="options.isLoggingIn = false">Sign up</v-btn>
+                    <div class="d-flex mt-3 justify-center">
+                        <router-link :to="{ path: './register' }">
+                            <v-btn color="orange" text>Sign up</v-btn>
+                        </router-link>
                     </div>
                 </v-flex>
                 </v-layout>
@@ -43,11 +42,7 @@ export default {
         email: '',
         password: '',
         stay_signed_in: false
-      }),
-        options: {
-            isLoggingIn: true,
-            shouldStayLoggedIn: true
-        } 
+      })
     }),
     methods: {
     ...mapActions('auth', ['loginAction']),
